@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int main() {
+    char sentence[1000];
+    printf("Enter a sentence: ");
+    fgets(sentence, sizeof(sentence), stdin);
+    
+    char longestWord[100] = "";
+    char currentWord[100] = "";
+    int maxLength = 0;
+    int currentLength = 0;
+    int j = 0;
+    
+    for (int i = 0; sentence[i] != '\0'; i++) {
+        if (isalpha(sentence[i]) || sentence[i] == '\'') {
+            currentWord[j++] = sentence[i];
+            currentLength++;
+        } else {
+            if (currentLength > maxLength) {
+                maxLength = currentLength;
+                currentWord[j] = '\0';
+                strcpy(longestWord, currentWord);
+            }
+            j = 0;
+            currentLength = 0;
+            currentWord[0] = '\0';
+        }
+    }
+    
+    printf("Longest word: %s (Length: %d)\n", longestWord, maxLength);
+    
+    return 0;
+}
