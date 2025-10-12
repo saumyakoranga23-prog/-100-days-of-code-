@@ -1,0 +1,43 @@
+#include <stdio.h>
+
+float calculateBill(int units) {
+    float bill = 0.0;
+    
+    if (units <= 100) {
+        bill = units * 7.0;
+    } else if (units <= 200) {
+        bill = 100 * 7.0 + (units - 100) * 7.0;
+    } else if (units <= 300) {
+        bill = 100 * 7.0 + 100 * 7.0 + (units - 200) * 10.0;
+    } else {
+        bill = 100 * 7.0 + 100 * 7.0 + 100 * 10.0 + (units - 300) * 12.0;
+    }
+    
+    return bill;
+}
+
+int main() {
+    int units;
+    printf("Enter units consumed: ");
+    scanf("%d", &units);
+    
+    float bill = calculateBill(units);
+    printf("Electricity bill: $%.2f\n", bill);
+    
+    return 0;
+}
+
+/*
+Sample Test Cases:
+Input: 80
+Output: Electricity bill: $560.00
+
+Input: 150
+Output: Electricity bill: $1050.00
+
+Input: 250
+Output: Electricity bill: $1900.00
+
+Input: 350
+Output: Electricity bill: $2900.00
+*/
