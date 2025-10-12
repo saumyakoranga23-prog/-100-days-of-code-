@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <math.h>
+
+int swapFirstLast(int n) {
+    if (n < 10) return n;
+    
+    int original = n;
+    int last = n % 10;
+    int first, temp = n;
+    int digits = 0;
+    
+    while (temp >= 10) {
+        temp /= 10;
+        digits++;
+    }
+    first = temp;
+    
+    // Remove first digit and add last digit at beginning
+    n = n % (int)pow(10, digits);
+    n = last * (int)pow(10, digits) + n;
+    
+    // Remove last digit and add first digit at end
+    n = n / 10;
+    n = n * 10 + first;
+    
+    return n;
+}
+
+int main() {
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    
+    int result = swapFirstLast(num);
+    printf("After swapping first and last digit: %d\n", result);
+    
+    return 0;
+}
