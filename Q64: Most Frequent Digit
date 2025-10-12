@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+int main() {
+    long long num;
+    printf("Enter a number: ");
+    scanf("%lld", &num);
+    
+    int frequency[10] = {0};
+    
+    if (num == 0) {
+        frequency[0]++;
+    } else {
+        while (num > 0) {
+            int digit = num % 10;
+            frequency[digit]++;
+            num /= 10;
+        }
+    }
+    
+    int maxFreq = 0;
+    int mostFrequent = 0;
+    
+    for (int i = 0; i < 10; i++) {
+        if (frequency[i] > maxFreq) {
+            maxFreq = frequency[i];
+            mostFrequent = i;
+        }
+    }
+    
+    printf("Most frequent digit: %d (appears %d times)\n", mostFrequent, maxFreq);
+    
+    return 0;
+}
