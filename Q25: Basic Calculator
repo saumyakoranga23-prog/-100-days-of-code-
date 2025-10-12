@@ -1,0 +1,62 @@
+#include <stdio.h>
+
+int main() {
+    char operator;
+    double num1, num2, result;
+    
+    printf("Enter an operator (+, -, *, /, %%): ");
+    scanf(" %c", &operator);
+    
+    printf("Enter two numbers: ");
+    scanf("%lf %lf", &num1, &num2);
+    
+    switch(operator) {
+        case '+':
+            result = num1 + num2;
+            printf("%.2lf + %.2lf = %.2lf\n", num1, num2, result);
+            break;
+        case '-':
+            result = num1 - num2;
+            printf("%.2lf - %.2lf = %.2lf\n", num1, num2, result);
+            break;
+        case '*':
+            result = num1 * num2;
+            printf("%.2lf * %.2lf = %.2lf\n", num1, num2, result);
+            break;
+        case '/':
+            if (num2 != 0) {
+                result = num1 / num2;
+                printf("%.2lf / %.2lf = %.2lf\n", num1, num2, result);
+            } else {
+                printf("Error: Division by zero!\n");
+            }
+            break;
+        case '%':
+            if ((int)num2 != 0) {
+                result = (int)num1 % (int)num2;
+                printf("%d %% %d = %.2lf\n", (int)num1, (int)num2, result);
+            } else {
+                printf("Error: Modulo by zero!\n");
+            }
+            break;
+        default:
+            printf("Error: Invalid operator!\n");
+    }
+    
+    return 0;
+}
+
+/*
+Sample Test Cases:
+Input: + 10 5
+Output: 10.00 + 5.00 = 15.00
+
+Input: * 7 8
+Output: 7.00 * 8.00 = 56.00
+
+Input: / 15 3
+Output: 15.00 / 3.00 = 5.00
+
+Input: % 17 5
+Output: 17 % 5 = 2.00
+*/
